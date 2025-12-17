@@ -4,8 +4,7 @@
 
 int main(){
     int a;
-    a = 5;
+    a = 51; 
     cout<<5; // show result.
-
     return 0;
 }

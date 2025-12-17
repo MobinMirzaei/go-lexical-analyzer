@@ -93,11 +93,20 @@ func (l *Lexer) NextToken() Token {
 			tok.Line = l.line
 			return tok
 		} else if isDigit(l.ch) {
-			tok.Literal = l.readNumber()
-			tok.Type = INTEGER_LIT
-			tok.Line = l.line
-			return tok
-		} else {
+        tok.Literal = l.readNumber()
+        
+        if isLetter(l.ch) {
+            badPart := l.readIdentifier() 
+            tok.Type = ILLEGAL
+            tok.Literal = tok.Literal + badPart
+            tok.Line = l.line
+            return tok
+        }
+        
+        tok.Type = INTEGER_LIT
+        tok.Line = l.line
+        return tok
+   		} else {
 			tok = Token{Type: ILLEGAL, Literal: string(l.ch), Line: l.line}
 		}
 	}
@@ -136,11 +145,11 @@ func (l *Lexer) skipBlockComment() {
 }
 
 func (l *Lexer) readIdentifier() string {
-	pos := l.position
-	for isLetter(l.ch) || isDigit(l.ch) {
-		l.readChar()
-	}
-	return l.input[pos:l.position]
+    position := l.position
+    for isLetter(l.ch) || isDigit(l.ch) {
+        l.readChar()
+    }
+    return l.input[position:l.position]
 }
 
 func (l *Lexer) readNumber() string {
