@@ -1,0 +1,11 @@
+/*this is compiler class project.*/
+#include <iostream>
+
+
+int main(){
+    int a;
+    a = 5;
+    cout<<5; // show result.
+
+    return 0;
+}

@@ -1,0 +1,26 @@
+
+int main(){
+               int a = 4; // create one variable named a.
+    int b; // create one variable b
+b = a + 5; 
+cout<<a;
+cout<<b;
+                                   b<<3; // shift b left by 3
+                  cout<<a;
+   cout<<b;
+}
+
+
+
+
+/*this is compiler class project.*/
+#include <iostream>
+
+
+int main(){
+    int a;
+    a = 5;
+    cout<<5; // show result.
+
+    return 0;
+}
